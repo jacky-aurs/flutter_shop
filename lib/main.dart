@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:shop/provide/current_index_provide.dart';
 import 'index_config.dart';
+import 'package:provide/provide.dart';
 void main() {
-  runApp(MyApp());
+  var currentIndexProvide = CurrentIndexProvide();
+  var provides = Providers();
+  provides..provide(Provider<CurrentIndexProvide>.value(currentIndexProvide));
+  runApp(ProviderNode(child: MyApp() , providers: provides));
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        backgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-          color: KColors.primaryColor,//主题颜色
-        )
+    return Container(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+              color: KColors.primaryColor,//主题颜色
+            )
+        ),
+        home: HomeView(),
       ),
-      home: HomeView(),
     );
   }
 }
