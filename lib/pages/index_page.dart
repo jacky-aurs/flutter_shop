@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provide/provide.dart';
 import 'package:shop/config/strings.dart';
 import 'package:shop/pages/category_page.dart';
 import 'package:shop/pages/home_page.dart';
@@ -30,9 +31,14 @@ class IndexPage extends StatelessWidget {
     MemberPage()
   ];
 
-
   @override
   Widget build(BuildContext context) {
-
+    return Provide(
+      // ignore: missing_return
+      builder: (context, child, value) {
+        //使用provide取值，provide
+        int currentIndex = value;
+      },
+    );
   }
 }

@@ -7,6 +7,7 @@ void main() {
   var currentIndexProvide = CurrentIndexProvide();
   var provides = Providers();
   provides..provide(Provider<CurrentIndexProvide>.value(currentIndexProvide));
+  //使用provide绑定
   runApp(ProviderNode(child: MyApp() , providers: provides));
 }
 
