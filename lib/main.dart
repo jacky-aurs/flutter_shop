@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/pages/index_page.dart';
 import 'package:shop/provide/current_index_provide.dart';
 import 'index_config.dart';
 import 'package:provide/provide.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
               color: KColors.primaryColor,//主题颜色
             )
         ),
-        home: HomeView(),
+        home: IndexPage(),
       ),
     );
   }
@@ -34,7 +35,7 @@ class HomeView extends StatelessWidget{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text(KString.HomeTitle),//女装商城
+        title: Text(KString.AppBarTitle),//女装商城
       ),
     );
   }
