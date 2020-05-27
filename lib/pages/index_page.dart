@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
 import 'package:shop/config/strings.dart';
 import 'package:shop/pages/category_page.dart';
 import 'package:shop/pages/home_page.dart';
 import 'package:shop/pages/member_page.dart';
 import 'package:shop/pages/shop_car_page.dart';
+import 'package:shop/provide/current_index_provide.dart';
 
 class IndexPage extends StatelessWidget {
   final List<BottomNavigationBarItem> bottonTabs = [
@@ -24,7 +25,7 @@ class IndexPage extends StatelessWidget {
         ),
   ];
 
-  List<Widget> tabBoides = [
+  final List<Widget> tabBoides = [
     HomePage(),
     CategoryPage(),
     ShopCarPage(),
@@ -33,11 +34,28 @@ class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provide(
-      // ignore: missing_return
-      builder: (context, child, value) {
-        //使用provide取值，provide
-        int currentIndex = value;
+    //屏幕适配
+    ScreenUtil.instance =ScreenUtil(height: 1334,width: 750)..init(context);
+    return Provide<CurrentIndexProvide>(
+      builder: (context, child, val) {
+        int _currentIndex =
+            Provide.value<CurrentIndexProvide>(context).currentIndex;
+        return Scaffold(
+          backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+          bottomNavigationBar: BottomNavigationBar(
+            items: bottonTabs,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              debugPrint(String.fromCharCode(index));
+              Provide.value<CurrentIndexProvide>(context).changeIndex(index);
+            },
+          ),
+          body: IndexedStack(
+            children: tabBoides,
+            index: _currentIndex,
+          ),
+        );
       },
     );
   }

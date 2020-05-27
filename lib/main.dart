@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 0.0,
+      height: 0.0,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -24,19 +26,6 @@ class MyApp extends StatelessWidget {
             )
         ),
         home: IndexPage(),
-      ),
-    );
-  }
-}
-
-
-class HomeView extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(KString.AppBarTitle),//女装商城
       ),
     );
   }
