@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop/config/strings.dart';
+import 'package:shop/pages/category_page.dart';
+import 'package:shop/pages/home_page.dart';
+import 'package:shop/pages/member_page.dart';
+import 'package:shop/pages/shop_car_page.dart';
 
 class IndexPage extends StatelessWidget {
   final List<BottomNavigationBarItem> bottonTabs = [
@@ -19,6 +23,16 @@ class IndexPage extends StatelessWidget {
         ),
   ];
 
+  List<Widget> tabBoides = [
+    HomePage(),
+    CategoryPage(),
+    ShopCarPage(),
+    MemberPage()
+  ];
+
+
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+
+  }
 }
