@@ -1,0 +1,16 @@
+{
+    "name": "node_shop_service",
+    "description": "flutter女装商城",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": {
+        "name": "zpp"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "express": "4.17.1",
+        "request": "2.88.2"
+    }
+}
