@@ -1,5 +1,5 @@
 const config = require('./config');
-const base_url = `http://${config.IP}:${config.PORT}`;
+const base_url = `http://${config.IP}:${config.PORT}`; 
 const image_url = base_url + '/images/'
 const Url = {
     'banner_url': image_url +'banner/',

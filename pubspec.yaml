@@ -32,7 +32,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   #latest version
-  dio: ^2.1.7
+  dio: ^3.0.9
   #Flutter之轮播图（多样式）
   flutter_swiper: ^1.1.4
   #屏幕适配
