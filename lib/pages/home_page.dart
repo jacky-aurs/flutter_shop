@@ -67,7 +67,10 @@ class _HomePageState extends State<HomePage>
                   children: <Widget>[
                     SwiperWidgh(
                       mbannerData: bannerData,
-                    )
+                    ),
+                    CategoryWidgh(
+                      catagoryData: catagoryData,
+                    ),
                   ],
                 ),
                 loadMore: () async {
@@ -87,6 +90,9 @@ class _HomePageState extends State<HomePage>
   }
 }
 
+/**
+ * banner
+ */
 class SwiperWidgh extends StatelessWidget {
   final List mbannerData;
 
@@ -101,13 +107,11 @@ class SwiperWidgh extends StatelessWidget {
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemCount: mbannerData.length,
-        // ignore: missing_return
         itemBuilder: (BuildContext context, int index) {
-          new InkWell(
+          return InkWell(
             onTap: () {
               print(index);
             },
-            // ignore: missing_return
             child: Image.network(
               "${mbannerData[index]['image']}",
               fit: BoxFit.cover,
@@ -117,6 +121,63 @@ class SwiperWidgh extends StatelessWidget {
         pagination: SwiperPagination(), //分页展示
         autoplay: true,
       ),
+    );
+  }
+}
+
+/**
+ * 分类
+ */
+class CategoryWidgh extends StatelessWidget {
+  final List catagoryData;
+
+  const CategoryWidgh({Key key, this.catagoryData}) : super(key: key);
+
+  Widget _GridViewBuild(BuildContext context, int index) {
+    return InkWell(
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 40,
+            width: 40,
+            child: Image.network(
+              catagoryData[index]['image'],
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(
+            height: 30,
+            child: Text(
+              catagoryData[index]['title'],
+              style: TextStyle(color: KColors.primaryColor, fontSize: 15),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.only(top: 10.0),
+      height: ScreenUtil().setHeight(240),
+      child: Expanded(
+        flex: 1,
+        child: GridView.builder(
+            physics: NeverScrollableScrollPhysics(), //禁止滑动
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 5, mainAxisSpacing: 0.0, crossAxisSpacing: 0.0),
+            itemCount: catagoryData.length,
+            itemBuilder: _GridViewBuild),
+      ),
+//      child: GridView.builder(
+//          physics: NeverScrollableScrollPhysics(), //禁止滑动
+//          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//              crossAxisCount: 5, mainAxisSpacing: 5.0, crossAxisSpacing: 3.0),
+//          itemCount: catagoryData.length,
+//          itemBuilder: _GridViewBuild),
     );
   }
 }
