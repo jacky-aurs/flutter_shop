@@ -64,42 +64,45 @@ const bannerData = {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "001",
-
+            "prices":"82",
         },
         {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "002",
+            "prices":"230",
 
         },
         {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "003",
-
+            "prices":"871",
         },
         {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "004",
+            "prices":"992",
 
         },
         {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "005",
-
+            "prices":"81",
         },
         {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "006",
-
+            "prices":"47",
         },
         {
             "name": "阿斯科利记得看马赛克的借记卡说",
             "image": banner_url + '1.jpeg',
             "goods": "007",
+            "prices":"98",
 
         },
         ],
