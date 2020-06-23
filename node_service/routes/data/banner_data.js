@@ -128,7 +128,7 @@ const bannerData = {
         ],
         "floorPic": [
             {
-                "image": banner_url + '1.jpeg',
+                "image": banner_url + '3.jpeg',
                 "goods": "001"
             },
 

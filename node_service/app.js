@@ -22,19 +22,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/getHomeData',require('./routes/home_data'))
-// /**
-//  * 首页数据
-//  */
-// const bannerData = require('./routes/data/banner_data');
-// app.get('/getHomeData'),(req,res)=>{
-//   console.error("1232131231");
-//   res.send(bannerData);
-// }
+app.use('/getHomeData',require('./routes/home_data'));//首页数据
+app.use('/getHotData',require('./routes/data/hot_data'));//首页数据
 
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
 
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;

@@ -44,21 +44,24 @@ class RecommentPage extends StatelessWidget {
 //        decoration: BoxDecoration(
 //            color: KColors.whiteColor,
 //            border: Border(left: BorderSide(width: 0.7))),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
-            Expanded(
+            Positioned(
                 child: Image.network(
               mRecommetData[index]['image'],
               fit: BoxFit.fitHeight,
-              width: 70,
+              height: 100,
+              width: 100,
             )),
-            Expanded(
+            Positioned(
+              bottom: 0,
+
               child: Text(
                 "¥${mRecommetData[index]['prices']}",
-                style: TextStyle(fontSize: 15, color: KColors.priceTextColor),
+                style: TextStyle(fontSize: 15, color: Colors.black),
               ),
-            ),
+            )
           ],
         ),
       ),

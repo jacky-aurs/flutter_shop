@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop/config/strings.dart';
 import 'package:shop/index_config.dart';
 import 'package:shop/pages/home_page/banner_page.dart';
+import 'package:shop/pages/home_page/floor_adv_pic.dart';
+import 'package:shop/pages/home_page/floor_one.dart';
 import 'package:shop/service/http_service.dart';
 import 'dart:convert';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -79,6 +81,12 @@ class _HomePageState extends State<HomePage>
                     ),
                     RecommentPage(
                       mRecommetData: recoment,
+                    ),
+                    FloorAdvPic(
+                      mFloorAdvPic: floorPic,
+                    ),
+                    FloorOne(
+                      mFoorlOne: floor1,
                     ),
                   ],
                 ),
