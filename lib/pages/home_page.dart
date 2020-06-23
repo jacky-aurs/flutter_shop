@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage>
   @override
   // ignore: must_call_super
   Widget build(BuildContext context) {
+    ScreenUtil().init(context);
     return Scaffold(
 
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),

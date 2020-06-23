@@ -13,20 +13,21 @@ class BannerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 5.0,right: 5.0,top: 5.0,bottom: 5.0),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+      margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0, bottom: 5.0),
       height: ScreenUtil().setHeight(300),
       width: ScreenUtil().setWidth(750),
-      color: Colors.white,
       child: Swiper(
         itemCount: mbannerData.length,
-        itemBuilder: (BuildContext context,int index){
+        itemBuilder: (BuildContext context, int index) {
           return InkWell(
-            onTap: (){
-
-            },
-            child: Image.network(mbannerData[index]['image'],fit: BoxFit.cover,),
+            onTap: () {},
+            child: Image.network(
+              mbannerData[index]['image'],
+              fit: BoxFit.cover,
+            ),
           );
-
         },
         pagination: SwiperPagination(),
         autoplay: true,

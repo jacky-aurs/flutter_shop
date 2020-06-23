@@ -40,7 +40,7 @@ class RecommentPage extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(5.0),
 //        decoration: BoxDecoration(
 //            color: KColors.whiteColor,
 //            border: Border(left: BorderSide(width: 0.7))),
@@ -53,9 +53,11 @@ class RecommentPage extends StatelessWidget {
               fit: BoxFit.fitHeight,
               width: 70,
             )),
-            Text(
-              "¥${mRecommetData[index]['prices']}",
-              style: TextStyle(fontSize: 15, color: KColors.priceTextColor),
+            Expanded(
+              child: Text(
+                "¥${mRecommetData[index]['prices']}",
+                style: TextStyle(fontSize: 15, color: KColors.priceTextColor),
+              ),
             ),
           ],
         ),
@@ -66,7 +68,6 @@ class RecommentPage extends StatelessWidget {
   //商品推荐横向数据
   Widget recommnetList() {
     return Container(
-      margin: EdgeInsets.all(5.0),
       height: ScreenUtil().setHeight(160),
       child: ListView.builder(
         itemBuilder: _recommentListWidght,
