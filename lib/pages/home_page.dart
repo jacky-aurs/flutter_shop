@@ -143,18 +143,22 @@ class _HomePageState extends State<HomePage>
                   maxLines: 1,
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
-                Row(
-                  children: <Widget>[
-                    Text(
-                      "¥"+e['oriPrice'],
-                      style: TextStyle(color: Colors.red, fontSize: 15),
-                    ),
-                    Text(
-                      " ¥"+e['presentPrice'],
-                      style: TextStyle(color: Colors.black26, fontSize: 14,decoration: TextDecoration.lineThrough),
-                    ),
-                  ],
-                )
+                Container(
+                  margin: EdgeInsets.only(top: 5),
+                    child:Row(
+                      children: <Widget>[
+                        Text(
+                          "¥"+e['oriPrice'],
+                          style: TextStyle(color: Colors.red, fontSize: 15),
+                        ),
+                        Text(
+                          " ¥"+e['presentPrice'],
+                          style: TextStyle(color: Colors.black26, fontSize: 14,decoration: TextDecoration.lineThrough),
+                        ),
+                      ],
+                    )
+                ),
+
               ],
             ),
           ),
