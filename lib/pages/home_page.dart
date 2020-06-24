@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,9 +21,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
+  //切换保持状态不变
   GlobalKey<RefreshFooterState> _globalKey =
       new GlobalKey<RefreshFooterState>();
 
+  int page = 1;
+  List<Map> hotDataList = []; //hotData数据
   @override
   // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true; //保持状态不会时时刷新
@@ -31,14 +35,12 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     ScreenUtil().init(context);
     return Scaffold(
-
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       appBar: AppBar(
         backgroundColor: KColors.primaryColor,
         title: Text(KString.HomeTitle),
       ),
       body: FutureBuilder(
-
         future: request("getHomeData", FormData: null),
         builder: (context, snapshot) {
           print(snapshot.hasData);
@@ -53,11 +55,9 @@ class _HomePageState extends State<HomePage>
                   (data['data']['recoment'] as List).cast();
               List<Map<String, dynamic>> floorPic =
                   (data['data']['floorPic'] as List).cast();
-              print("recommen+${recoment}");
               List<Map<String, dynamic>> floor1 =
                   (data['data']['floor1'] as List).cast();
               return EasyRefresh(
-
                 refreshFooter: ClassicsFooter(
                   key: _globalKey,
                   bgColor: Colors.white,
@@ -70,9 +70,7 @@ class _HomePageState extends State<HomePage>
                   loadReadyText: KString.loadReadyText, //正在加载
                 ),
                 child: ListView(
-
                   children: <Widget>[
-
                     BannerPage(
                       mbannerData: bannerData,
                     ),
@@ -88,10 +86,12 @@ class _HomePageState extends State<HomePage>
                     FloorOne(
                       mFoorlOne: floor1,
                     ),
+                    getHotWidght(),
                   ],
                 ),
                 loadMore: () async {
                   print("loadmore");
+                  getHotData();
                 },
               );
             } catch (e) {
@@ -105,8 +105,92 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
-}
 
+  void getHotData() async {
+    var formData = {"page": ++page};
+    request("getHotData", FormData: formData).then((value) {
+      Map data = new Map.from(json.decode(value.toString()));
+      List<Map> nowDataList = (data['data'] as List).cast();
+      //状态
+      setState(() {
+        hotDataList.addAll(nowDataList);
+        page++;
+      });
+    });
+  }
+
+  Widget _warpWidght() {
+    final widthSize = MediaQuery.of(context).size.width;
+    if (hotDataList.length != 0) {
+      List<Widget> listWidght = hotDataList.map((e) {
+        return InkWell(
+          onTap: () {},
+          child: Container(
+            width: widthSize / 2 - 3,
+            color: Colors.white,
+            padding: EdgeInsets.all(5.0),
+            margin: EdgeInsets.only(bottom: 3.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Image.network(
+                  e['image'],
+                  width: widthSize / 2,
+                  height: 200,
+                ),
+                Text(
+                  e['details'],
+                  maxLines: 1,
+                  style: TextStyle(color: Colors.black, fontSize: 15),
+                ),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      "¥"+e['oriPrice'],
+                      style: TextStyle(color: Colors.red, fontSize: 15),
+                    ),
+                    Text(
+                      " ¥"+e['presentPrice'],
+                      style: TextStyle(color: Colors.black26, fontSize: 14,decoration: TextDecoration.lineThrough),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      }).toList();
+
+      return Wrap(spacing: 2, children: listWidght);
+    } else {
+      return Container(
+        child: Text(""),
+      );
+    }
+  }
+
+  Widget hotTitalWidght() {
+    return Container(
+      alignment: Alignment.center,
+      margin: EdgeInsets.only(top: 5, bottom: 5),
+      child: Text(
+        "火爆专区",
+        style: TextStyle(fontSize: 15, color: KColors.primaryColor),
+      ),
+    );
+  }
+
+  Widget getHotWidght() {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          hotTitalWidght(),
+          _warpWidght(),
+        ],
+      ),
+    );
+  }
+}
 
 /*
 *商品推荐

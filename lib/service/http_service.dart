@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:shop/index_config.dart';
 import 'package:shop/util/toast_util.dart';
 
+/**
+ * post请求
+ */
 // ignore: non_constant_identifier_names
 Future request(url, {FormData}) async {
   try {
@@ -21,6 +24,7 @@ Future request(url, {FormData}) async {
     } else {
       response = await dio.post(KHttpService.servicePath[url], data: FormData);
     }
+
 
     if (response.statusCode == 200) {
 //      ToastUtil(response.data.toString());
