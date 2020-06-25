@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage>
   @override
   // ignore: must_call_super
   Widget build(BuildContext context) {
-    ScreenUtil().init(context);
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       appBar: AppBar(
@@ -143,18 +143,22 @@ class _HomePageState extends State<HomePage>
                   maxLines: 1,
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
-                Row(
-                  children: <Widget>[
-                    Text(
-                      "¥"+e['oriPrice'],
-                      style: TextStyle(color: Colors.red, fontSize: 15),
-                    ),
-                    Text(
-                      " ¥"+e['presentPrice'],
-                      style: TextStyle(color: Colors.black26, fontSize: 14,decoration: TextDecoration.lineThrough),
-                    ),
-                  ],
-                )
+                Container(
+                  margin: EdgeInsets.only(top: 5),
+                    child:Row(
+                      children: <Widget>[
+                        Text(
+                          "¥"+e['oriPrice'],
+                          style: TextStyle(color: Colors.red, fontSize: 15),
+                        ),
+                        Text(
+                          " ¥"+e['presentPrice'],
+                          style: TextStyle(color: Colors.black26, fontSize: 14,decoration: TextDecoration.lineThrough),
+                        ),
+                      ],
+                    )
+                ),
+
               ],
             ),
           ),

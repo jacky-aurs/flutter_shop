@@ -35,7 +35,7 @@ class CategoryPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0, bottom: 5.0),
       padding: EdgeInsets.only(top: 10, left: 10.0, right: 10.0, bottom: 10.0),
-      height: ScreenUtil().setHeight(220),
+      height: ScreenUtil().setHeight(270),
       decoration: BoxDecoration(
           color: KColors.primaryColor,
           borderRadius: BorderRadius.circular(10.0)),
